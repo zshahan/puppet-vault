@@ -185,13 +185,17 @@ class vault (
   contain vault::service
   if $initialize_vault {
     contain vault::config::initialize
+
+    Class['vault::install']
+    -> Class['vault::config']
+    -> Class['vault::service']
+    -> Class['vault::config::initialize']
+  } else {
+    Class['vault::install']
+    -> Class['vault::config']
+    -> Class['vault::service']
+    -> Class['vault::config::initialize']
   }
-
-  Class['vault::install']
-  -> Class['vault::config']
-  -> Class['vault::service']
-  -> Class['vault::config::initialize']
-
   ## Setup ldap authentication for vault
   if $enable_ldap {
     create_resources ('vault::config::ldap', $ldap_config)
