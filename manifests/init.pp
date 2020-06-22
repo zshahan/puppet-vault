@@ -194,7 +194,6 @@ class vault (
     Class['vault::install']
     -> Class['vault::config']
     -> Class['vault::service']
-    -> Class['vault::config::initialize']
   }
   ## Setup ldap authentication for vault
   if $enable_ldap {
