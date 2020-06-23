@@ -31,7 +31,7 @@ CapabilityBoundingSet=CAP_SYSLOG CAP_IPC_LOCK
 NoNewPrivileges=yes
 Environment=GOMAXPROCS=<%= scope['vault::num_procs'] %>
 <% if scope['vault::agent_mode'] -%>
-Environment=VAULT_ADDR=<% scope['vault::api_addr'] -%>
+Environment=VAULT_ADDR=<% scope['vault::api_addr'] %>
 ExecStart=<%= scope['vault::bin_dir'] %>/vault agent -config=<%= scope['vault::config_dir'] %>/config.json <%= scope['vault::service_options'] %>
 <% else -%>
 ExecStart=<%= scope['vault::bin_dir'] %>/vault server -config=<%= scope['vault::config_dir'] %>/config.json <%= scope['vault::service_options'] %>
