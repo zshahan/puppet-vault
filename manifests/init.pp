@@ -77,6 +77,8 @@
 #
 # * `manage_vault_utils`
 #   Instruct puppet to manage the additional utilities like openssl and jq
+# * `agent_mode`
+#   Enable agent mode rather than server mode
 # == Class vault::initialize
 # * `initialize_vault`
 #   If set to true, will initialize vault after installation.  Keys and tokens
@@ -173,6 +175,7 @@ class vault (
   Optional[Hash]             $vault_policies            = $vault::params::default_policies,
   String                     $version                   = '1.3.2',
   Boolean                    $manage_vault_utils        = true,
+  Boolean                    $agent_mode                = false,
 ) inherits vault::params {
 
   $_download_url     = "${download_url_base}${version}"
