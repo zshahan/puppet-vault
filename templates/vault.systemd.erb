@@ -17,7 +17,7 @@ ConditionFileNotEmpty=<%= scope['vault::config_dir'] %>/config.json
 User=<%= scope['vault::user'] %>
 Group=<%= scope['vault::group'] %>
 PrivateDevices=yes
-PrivateTmp=yes
+PrivateTmp=no
 ProtectSystem=full
 ProtectHome=read-only
 <% # Still require check for :undef for Puppet 3.x -%>
